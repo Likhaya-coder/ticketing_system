@@ -7,16 +7,18 @@
                     <h2 class="text-lg font-semibold">{{ $ticket->title }}</h2>
                     <p class="text-gray-600">{{ $ticket->description }}</p>
                     <div class="flex">
-                        <div class="mr-2">
+                        <form class="mr-2" action="">
                             <x-primary-button class="mt-6">
                                 {{ __('update ticket') }}
                             </x-primary-button>
-                        </div>
-                        <div class="ml-2">
+                        </form>
+                        <form class="ml-2" method="POST" action="{{route('ticket.destroy', $ticket->id)}}">
+                            @csrf
+                            @method('delete')
                             <x-primary-button class="mt-6">
                                 {{ __('delete ticket') }}
                             </x-primary-button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
